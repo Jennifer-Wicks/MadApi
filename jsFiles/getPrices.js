@@ -11,5 +11,11 @@ const getAllPrices = async () => {
     catch (err) {
       console.error(err.message)
     }
+    // to be deleted after testing
+    setTimeout(function(){ 
+      alert("After 5 seconds!");
+      console.log("allPrices", allPrices);
+    }, 2000);
+    // to be deleted after testing
   };
-getAllPrices(); 
+// getAllPrices(); 

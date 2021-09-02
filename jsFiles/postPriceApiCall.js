@@ -39,7 +39,7 @@ const handleSubmitPriceList = async () => {
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(body),
      });
-     window.location = '/pages/price-list.html';
+    //  window.location = '/pages/input-new-price-list.html';
    } catch (err) {
      console.error(err.message);
    }
