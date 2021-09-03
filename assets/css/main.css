@@ -4860,3 +4860,17 @@ body.is-preload #wrapper.fade-in:before {
   }
 
 }
+
+/* Specials Wim 14-01-2021*/
+
+.special-offer-box {
+  font-size: 18px; 
+  text-align: center; 
+  background-color: #0ff; 
+  border-radius: 2px;
+}
+
+.special-offer-table {
+  background-color: #ff0033; 
+  color: #ffffff;
+}

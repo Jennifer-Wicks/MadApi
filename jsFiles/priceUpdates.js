@@ -1,29 +1,151 @@
-const camps = [];
+//data that will be received from the database - start
+const camps = [
+  //ls
+  {
+    season: "ls",
+    accommodation_type: "Camping site tls - max 8 people",
+    area: "Fish River Canyon",
+    camp_name: "Ai-Ais",
+    date: "2021-06-28T22:00:00.000Z",
+    low_season_end: "2021-06-29T22:00:00.000Z",
+    low_season_start: "2020-10-31T22:00:00.000Z",
+    national_park: "Richtersveld Tranfortier Park",
+    price_id: 1,
+    sharing_price_hs: "",
+    sharing_price_ls: "",
+    single_price_hs: "100",
+    single_price_ls: "100",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "Some comping sites under construction due to flooding"
+  },
+  {
+    season: "ls",
+    accommodation_type: "Camping site nls - max 8 people",
+    area: "Fish River Canyon",
+    camp_name: "Ai-Ais",
+    date: "2021-06-28T22:00:00.000Z",
+    low_season_end: "2022-06-29T22:00:00.000Z",
+    low_season_start: "2021-10-31T22:00:00.000Z",
+    national_park: "Richtersveld Tranfortier Park",
+    price_id: 2,
+    sharing_price_hs: "",
+    sharing_price_ls: "",
+    single_price_hs: "200",
+    single_price_ls: "200",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "Some comping sites under construction due to flooding"
+  },
+  {
+    season: "ls",
+    accommodation_type: "Camping tls - Max 8 People",
+    area: "Sossusvlei",
+    camp_name: "Sesriem",
+    date: "2021-06-28T22:00:00.000Z",
+    low_season_end: "2021-06-29T22:00:00.000Z",
+    low_season_start: "2020-10-31T22:00:00.000Z",
+    national_park: "Namib Naukluft National Park",
+    price_id: 3,
+    sharing_price_hs: "490",
+    sharing_price_ls: "490",
+    single_price_hs: "",
+    single_price_ls: "",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "none"
+  },
+  {
+    season: "ls",
+    accommodation_type: "Camping nls - Max 8 People",
+    area: "Sossusvlei",
+    camp_name: "Sesriem",
+    date: "2021-06-28T22:00:00.000Z",
+    low_season_end: "2022-06-29T22:00:00.000Z",
+    low_season_start: "2021-10-31T22:00:00.000Z",
+    national_park: "Namib Naukluft National Park",
+    price_id: 4,
+    sharing_price_hs: "490",
+    sharing_price_ls: "490",
+    single_price_hs: "",
+    single_price_ls: "",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "none"
+  },
+  //hs
+  {
+    season: "hs",
+    accommodation_type: "Camping site ths - max 8 people",
+    area: "Fish River Canyon",
+    camp_name: "Ai-Ais",
+    date: "2021-06-28T22:00:00.000Z",
+    high_season_end: "2021-10-30T22:00:00.000Z",
+    high_season_start: "2021-06-30T22:00:00.000Z",
+    national_park: "Richtersveld Tranfortier Park",
+    price_id: 5,
+    sharing_price_hs: "",
+    sharing_price_ls: "",
+    single_price_hs: "100",
+    single_price_ls: "100",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "Some comping sites under construction due to flooding"
+  },
+  {
+    season: "hs",
+    accommodation_type: "Camping ths - Max 8 People",
+    area: "Sossusvlei",
+    camp_name: "Sesriem",
+    date: "2021-06-28T22:00:00.000Z",
+    high_season_end: "2021-10-30T22:00:00.000Z",
+    high_season_start: "2021-06-30T22:00:00.000Z",
+    national_park: "Namib Naukluft National Park",
+    price_id: 6,
+    sharing_price_hs: "100",
+    sharing_price_ls: "100",
+    single_price_hs: "",
+    single_price_ls: "",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "none"
+  },  
+  {
+    season: "hs",
+    accommodation_type: "Camping site nhs - max 8 people",
+    area: "Fish River Canyon",
+    camp_name: "Ai-Ais",
+    date: "2021-06-28T22:00:00.000Z",
+    high_season_end: "2022-10-30T22:00:00.000Z",
+    high_season_start: "2022-06-30T22:00:00.000Z",
+    national_park: "Richtersveld Tranfortier Park",
+    price_id: 7,
+    sharing_price_hs: "",
+    sharing_price_ls: "",
+    single_price_hs: "200",
+    single_price_ls: "200",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "Some comping sites under construction due to flooding"
+  },
+  {
+    season: "hs",
+    accommodation_type: "Camping site 2nhs - max 8 people",
+    area: "Fish River Canyon",
+    camp_name: "Sesriem",
+    date: "2021-06-28T22:00:00.000Z",
+    high_season_end: "2022-10-30T22:00:00.000Z",
+    high_season_start: "2022-06-30T22:00:00.000Z",
+    national_park: "Richtersveld Tranfortier Park",
+    price_id: 8,
+    sharing_price_hs: "",
+    sharing_price_ls: "",
+    single_price_hs: "200",
+    single_price_ls: "200",
+    supplier_name: "Namibia Wildlife Resort",
+    warning_messages: "Some comping sites under construction due to flooding"
+  },
+];
+//data that will be received from the database - end
 
-const getAllPrices = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/NwrPriceList')
-      const jsonData = await response.json()
-      for (let i = 0; i < jsonData.length; i++) {
-        camps.push(jsonData[i])
-      }
-    }
-    catch (err) {
-      console.error(err.message)
-    }
-    // to be deleted after testing
-    // setTimeout(function(){ 
-    //   console.log("camps", camps);
-    // }, 2000);
-    // to be deleted after testing
-  };
-getAllPrices(); 
+//global variables
 
-setTimeout(function(){ 
-  
 const headings = ["Accommodation", "Sharing", "Single"];
 const thisCampName = "Ai-Ais";
-let today = new Date();
+let today = new Date(2021, 1, 1);
 const lastYear = today.getFullYear() - 1;
 const nextYear = today.getFullYear() + 1;
 const currentLowSeasonStart = new Date(today.getFullYear(), 0, 1)
@@ -126,30 +248,29 @@ const insertBody =() => {
       const dbDateLsE = new Date(data.low_season_end);
       
       if (today < dbDateLsE && dbDateLsE.getFullYear() === today.getFullYear()) {
-        
+
         if (thisCampName === data.camp_name) {
           
           var div = document.getElementById('lowSeason');
           div.appendChild(createTBody);
           var createTR = document.createElement('tr');
           createTBody.appendChild(createTR);
-          
+  
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
           createTD.textContent = data.accommodation_type;
-          
+  
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
           createTD.textContent = data.sharing_price_ls;
-          
+  
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
           createTD.textContent = data.single_price_ls;
         }      
       }
     })
-  } 
-  else if (today >= currentHighSeasonEnd && today <= nextLowSeasonEnd) {
+  } else if (today >= currentHighSeasonEnd && today <= nextLowSeasonEnd) {
     createHeadingsNlSTlS(); 
     camps.forEach(data => {
       const createTBody = document.createElement('tbody');
@@ -229,7 +350,6 @@ const insertSeasonHeadings = () => {
   } 
 } 
 insertSeasonHeadings();
-
 const insertBodyHs = () => { 
   if (today >= currentLowSeasonStart && today <= currentHighSeasonEnd) {
     createHeadingsHs()
@@ -254,11 +374,11 @@ const insertBodyHs = () => {
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.sharing_price_hs;
+          createTD.textContent = data.sharing_price_ls;
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.single_price_hs;
+          createTD.textContent = data.single_price_ls;
         }      
       }
     }
@@ -284,11 +404,11 @@ const insertBodyHs = () => {
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.sharing_price_hs;
+          createTD.textContent = data.sharing_price_ls;
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.single_price_hs;
+          createTD.textContent = data.single_price_ls;
         }      
       }
     }
@@ -649,11 +769,11 @@ const nextHighSeason = () => {
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.sharing_price_hs;
+          createTD.textContent = data.sharing_price_ls;
   
           var createTD = document.createElement('td');
           createTR.appendChild(createTD);
-          createTD.textContent = data.single_price_hs;
+          createTD.textContent = data.single_price_ls;
         }      
       }
     }
@@ -779,5 +899,7 @@ const nextHighSeason = () => {
 }
 nextHighSeason()
 
-}, 2000);
+
+
+
 
