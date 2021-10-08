@@ -14,10 +14,10 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  db.insert(req.body).returning('*').into('nwr_price_list')
-  .then(function (data) {
-    res.send(data)
-  })
+  db.insert(req.body).into('nwr_price_list')
+    .then(function (data) {
+      res.send(data)
+    })
     .catch(err => res.status(400).json('unable to post'))
 });
 

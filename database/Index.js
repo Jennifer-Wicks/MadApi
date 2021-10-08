@@ -1,13 +1,9 @@
 require('dotenv').config();
 
 const knex = require('knex')({
-  client: 'pg',
+  client: 'sqlite3',
   connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    port: 5432,
-    database: process.env.DB_NAME
+    filename: './madbookings.db'
   }
 });
 
