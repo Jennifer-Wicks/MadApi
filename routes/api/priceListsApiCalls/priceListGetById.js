@@ -4,9 +4,9 @@ const router = express.Router();
 const db = require('../../../database');
 
 //Get camp by ID - Change prices
-router.get("/:price_id", (req, res, next) => {
+router.get("/:price_id", async (req, res, next) => {
   var params = [req.params.price_id]
-  db.raw(`SELECT * FROM nwr_price_list WHERE price_id = ?`, [params])
+  await db.raw(`SELECT * FROM nwr_price_list WHERE price_id = ?`, [params])
     .then(function (data) {
       res.send(data)
     })
