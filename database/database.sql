@@ -4,29 +4,29 @@ CREATE DATABASE madbookings;
 
 CREATE TABLE signin
 (
-  si_id SERIAL,
+  si_id INTEGER PRIMARY KEY NOT NULL,
   lastname VARCHAR(255),
-  email VARCHAR(255) NOT NULL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
   date DATE NOT NULL
 );
 
 CREATE TABLE secrets
 (
-  se_id SERIAL,
+  se_id INTEGER PRIMARY KEY NOT NULL,
   password VARCHAR(255),
-  email VARCHAR(255) UNIQUE NOT NULL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
   date DATE NOT NULL
 );
 
 INSERT INTO signin
   (lastname, email, date)
 VALUES
-  ('myPassword', 'test@test1.com', '2021-01-10');
+  ('test', 'test@test.com', '2021-10-27');
 
 INSERT INTO secrets
   (password, email, date)
 VALUES
-  ('myPassword', 'test@test1.com', '2021-01-10');
+  ('test', 'test@test.com', '2021-10-27');
 
 /*Create tables and inset data */
 

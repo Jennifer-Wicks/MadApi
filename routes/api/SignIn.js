@@ -22,7 +22,18 @@ router.post('/', function (req, res) {
         res.status(400).json('wrong credentials1')
       }
     })
-    .catch(err => res.status(400).json('wrong credentials2'))
+    .catch(function (err) {
+      console.log('error: ', err);
+    });
+  // .catch(err => res.status(400).json('wrong credentials2'))
 });
+
+// router.get('/', async function (req, res) {
+//   await db.select().from('signin')
+//     .then(function (data) {
+//       res.send(data);
+//     })
+//     .catch((err) => res.status(400).json('unable to get all signIn details'))
+// });
 
 module.exports = router;

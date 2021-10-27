@@ -13,17 +13,17 @@ router.post('/', function (req, res) {
     trx.insert({
       password: password,
       email: email,
-      date: new Date()
+      date: Date()
     })
       .into('secrets')
-      .returning('email')
-      .then(loginEmail => {
+      //last_insert_rowid()
+      .then(si_id => {
         return trx('signin')
-          .returning('*')
           .insert({
+            si_id: si_id, //login.se_id.last_insert_rowid('secrets')
             lastname: lastname,
-            email: loginEmail[0],
-            date: new Date()
+            email: email,
+            date: Date()
           })
           .then(user => {
             res.json(user[0]);
@@ -32,8 +32,16 @@ router.post('/', function (req, res) {
       .then(trx.commit)
       .catch(trx.rollback)
   })
-    .catch(err => res.status(400).json('unable to register'))
+    .catch(function (err) {
+      console.log('error: ', err);
+    });
+  // .catch(err => res.status(400).json('unable to register'))
 });
+
+// router.get('/', async function (req, res) {
+//   await db.select().from('nwr_price_list')
+//   res.json('Register')
+// });
 
 module.exports = router;
 
