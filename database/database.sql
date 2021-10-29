@@ -86,3 +86,83 @@ VALUES
     'This will be a warning message i.e - Camp under repair after flooding',
     '2021-06-25'
   );
+
+CREATE TABLE customer_information
+(
+  ci_id INTEGER PRIMARY KEY NOT NULL,
+  name VARCHAR(255),
+  surname VARCHAR(255),
+  nationality VARCHAR(255),
+  tel VARCHAR(255),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  adults VARCHAR(255),
+  child1_5 VARCHAR(255),
+  child6_12 VARCHAR(255),
+  date DATE NOT NULL
+);
+
+INSERT INTO customer_information
+  (name, surname, nationality, tel, email, adults, child1_5, child6_12, date)
+VALUES
+  ("name", "surname", "nationality", "0123654897", "email@email.com", "50", "5", "12", "2021-10-29");
+
+
+CREATE TABLE customer_booking
+(
+  cb_id INTEGER PRIMARY KEY NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  resort1 VARCHAR(255),
+  accomtype1 VARCHAR(255),
+  arriveday1 DATE NOT NULL,
+  departday1 DATE NOT NULL,
+  resort2 VARCHAR(255),
+  accomtype2 VARCHAR(255),
+  arriveday2 DATE NOT NULL,
+  departday2 DATE NOT NULL,
+  resort3 VARCHAR(255),
+  accomtype3 VARCHAR(255),
+  arriveday3 DATE NOT NULL,
+  departday13 DATE NOT NULL,
+  comments VARCHAR(1000),
+  newsletter BOOLEAN,
+  date DATE NOT NULL
+);
+
+INSERT INTO customer_booking
+  (email, resort1, accomtype1, arriveday1, departday1, resort2, accomtype2, arriveday2, departday2, resort3, accomtype3, arriveday3, departday13, comments, newsletter, date)
+VALUES
+  ("email2@email.com", 
+    "resort1",
+    "accomtype1",
+    "2021-10-29",
+    "2021-10-29",
+    "resort2",
+    "accomtype2",
+    "2021-10-29",
+    "2021-10-29",
+    "resort3",
+    "accomtype3",
+    "2021-10-29",
+    "2021-10-29",
+    "comments",
+    false,
+    "2021-10-29"
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
