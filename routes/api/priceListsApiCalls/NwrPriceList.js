@@ -5,7 +5,7 @@ const db = require('../../../database');
 
 //Get all prices
 router.get('/', async function (req, res) {
-  await db.select().from('nwr_price_list')
+  await db.select().from('nwr_price_list').orderBy('camp_name')
     .then(function (data) {
       res.send(data);
     })
