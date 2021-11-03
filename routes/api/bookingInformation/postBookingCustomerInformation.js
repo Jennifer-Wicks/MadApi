@@ -29,6 +29,17 @@ router.post('/customer', async function (req, res) {
     .then(function (data) {
       res.send(data)
     })
+    .then(function (data) {
+      res.send(data);
+    })
+  // .catch(err => res.status(400).json('unable to post'))
+});
+//Enter booking details
+router.post('/booking', async function (req, res) {
+  await db.insert(req.body).into('customer_booking')
+    .then(function (data) {
+      res.send(data)
+    })
     .catch(err => res.status(400).json('unable to post'))
 });
 
@@ -39,15 +50,6 @@ router.delete("/customer/:ci_id", async (req, res) => {
     res.status(200).json("deleted")
   )
     .catch((err) => res.status(400).json('unable to delete'))
-});
-
-//Enter booking details
-router.post('/booking', async function (req, res) {
-  await db.insert(req.body).into('customer_booking')
-    .then(function (data) {
-      res.send(data)
-    })
-    .catch(err => res.status(400).json('unable to post'))
 });
 
 //Delete booking by id

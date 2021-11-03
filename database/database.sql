@@ -110,7 +110,7 @@ VALUES
 CREATE TABLE customer_booking
 (
   cb_id INTEGER PRIMARY KEY NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) NOT NULL,
   resort1 VARCHAR(255),
   accomtype1 VARCHAR(255),
   arriveday1 DATE NOT NULL,
