@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../../database');
 
+router.get('/pricestest', async function (req, res) {
+  res.json("price list")
+});
 //Get all prices
 router.get('/', async function (req, res) {
   await db.select().from('nwr_price_list').orderBy('camp_name')
