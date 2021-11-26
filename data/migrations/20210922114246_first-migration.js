@@ -12,10 +12,10 @@ exports.up = (knex) => {
       table.date('high_season_start');
       table.date('high_season_end');
       table.string('accommodation_type', 255);
-      table.bigInteger('sharing_price_ls');
-      table.bigInteger('single_price_ls');
-      table.bigInteger('sharing_price_hs');
-      table.bigInteger('single_price_hs');
+      table.string('sharing_price_ls', 255);
+      table.string('single_price_ls', 255);
+      table.string('sharing_price_hs', 255);
+      table.string('single_price_hs', 255);
       table.string('warning_messages', 2000);
       table.string('date');
     });
