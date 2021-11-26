@@ -18,6 +18,9 @@ router.post('/', async function (req, res) {
     .then(function (data) {
       res.send(data)
     })
+    // .catch(function (err) {
+    //   console.log('error: ', err);
+    // });
     .catch(err => res.status(400).json('unable to post'))
 });
 

@@ -32,7 +32,7 @@ VALUES
 
 CREATE TABLE nwr_price_list
 (
-  price_id SERIAL PRIMARY KEY,
+  price_id SERIAL PRIMARY KEY, 
   supplier_name VARCHAR(255),
   area VARCHAR(255),
   national_park VARCHAR(600),
@@ -42,10 +42,10 @@ CREATE TABLE nwr_price_list
   high_season_start DATE,
   high_season_end DATE,
   accommodation_type VARCHAR(255),  
-  sharing_price_ls bigint,  
-  single_price_ls bigint,  
-  sharing_price_hs bigint,  
-  single_price_hs bigint, 
+  sharing_price_ls VARCHAR(255),  
+  single_price_ls VARCHAR(255),  
+  sharing_price_hs VARCHAR(255),  
+  single_price_hs VARCHAR(255), 
   warning_messages VARCHAR(2000),  
   date DATE
 );

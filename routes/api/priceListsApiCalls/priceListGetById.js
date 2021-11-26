@@ -10,7 +10,10 @@ router.get("/:price_id", async (req, res, next) => {
     .then(function (data) {
       res.send(data)
     })
-    .catch(err => res.status(400).json('unable to post'))
+    .catch(function (err) {
+      console.log('error: ', err);
+    });
+  // .catch(err => res.status(400).json('unable to get by ID'))
 });
 
 

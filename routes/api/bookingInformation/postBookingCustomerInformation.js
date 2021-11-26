@@ -29,9 +29,6 @@ router.post('/customer', async function (req, res) {
     .then(function (data) {
       res.send(data)
     })
-    // .then(function (data) {
-    //   res.send(data);
-    // })
     .catch(err => res.status(400).json('unable to post'))
 });
 //Enter booking details
