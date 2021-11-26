@@ -16,6 +16,11 @@ app.use(cors());
 
 app.use('/api', apiRoute);
 
+//Index page (static HTML)
+app.route("/").get(function (req, res) {
+  res.sendFile(process.cwd() + "/index.html");
+});
+
 app.listen(port, () => {
   console.log(`App is listening on port: ${port}`);
 })
