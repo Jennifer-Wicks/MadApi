@@ -21,9 +21,6 @@ router.post('/', async function (req, res) {
     .then(function (data) {
       res.send(data)
     })
-    // .catch(function (err) {
-    //   console.log('error: ', err);
-    // });
     .catch(err => res.status(400).json('unable to post'))
 });
 
@@ -46,14 +43,17 @@ router.get('/:camp_name', async function (req, res) {
     .catch((err) => res.status(400).json('unable to get camp prices'))
 });
 
-// Change info by ID
-router.put("/", async (req, res, next) => {
-  var reqBody = req.body;
-  await db.raw(`UPDATE nwr_price_list SET supplier_name = ?, area = ?, national_park = ?, camp_name = ?, low_season_start = ?, low_season_end = ?, high_season_start = ?, high_season_end = ?, accommodation_type = ?, sharing_price_ls = ?, single_price_ls = ?, sharing_price_hs = ?, single_price_hs = ?, warning_messages = ?, date = ? WHERE price_id = ?`,
-    [reqBody.supplier_name, reqBody.area, reqBody.national_park, reqBody.camp_name, reqBody.low_season_start, reqBody.low_season_end, reqBody.high_season_start, reqBody.high_season_end, reqBody.accommodation_type, reqBody.sharing_price_ls, reqBody.single_price_ls, reqBody.sharing_price_hs, reqBody.single_price_hs, reqBody.warning_messages, Date(), reqBody.price_id],
-    res.status(200).json("updated")
-  )
-    .catch((err) => res.status(400).json('unable to get change'))
-});
+// Change info by ID - not working
+// router.put("/", async (req, res, next) => {
+//   var reqBody = req.body;
+//   await db.raw(`UPDATE nwr_price_list SET supplier_name = ?, area = ?, national_park = ?, camp_name = ?, low_season_start = ?, low_season_end = ?, high_season_start = ?, high_season_end = ?, accommodation_type = ?, sharing_price_ls = ?, single_price_ls = ?, sharing_price_hs = ?, single_price_hs = ?, warning_messages = ?, date = ? WHERE price_id = ?`,
+//     [reqBody.supplier_name, reqBody.area, reqBody.national_park, reqBody.camp_name, reqBody.low_season_start, reqBody.low_season_end, reqBody.high_season_start, reqBody.high_season_end, reqBody.accommodation_type, reqBody.sharing_price_ls, reqBody.single_price_ls, reqBody.sharing_price_hs, reqBody.single_price_hs, reqBody.warning_messages, Date(), reqBody.price_id],
+//     res.status(200).json("updated")
+//   )
+//     .catch(function (err) {
+//       console.log('error: ', err);
+//     });
+//   // .catch((err) => res.status(400).json('unable to get change'))
+// });
 
 module.exports = router;

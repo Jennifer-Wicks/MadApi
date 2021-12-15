@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../../database');
 
-//Get camp by ID - Change prices
-router.get("/:price_id", async (req, res, next) => {
+//Get camp by ID - Change prices - Not working
+router.get('/:price_id', async function (req, res) {
   var params = [req.params.price_id]
   await db.raw(`SELECT * FROM nwr_price_list WHERE price_id = ?`, [params])
     .then(function (data) {
